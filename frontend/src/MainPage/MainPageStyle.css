@@ -1,0 +1,102 @@
+.MainPageRow{
+    text-align: center;
+   
+}
+
+.MainPageRowTop{
+    text-decoration: underline;
+    letter-spacing: 0.1em;
+    font-size: 64px;
+    -webkit-animation: slide-in-right 1ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-right 1.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+   
+}
+
+.MainPageRowBottom{
+    letter-spacing: 0.1em;
+    font-size: 32px;
+    -webkit-animation: slide-in-right 1ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-right 1.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@media screen and (max-width: 600px){
+  .MainPageRowTop{
+    font-size:50px;
+    text-shadow: 1px 1px 1px white;
+}
+
+.MainPageRowBottom{
+    font-size: 30px;
+    text-shadow: 1px 1px 1px white;
+}
+  
+}
+
+
+
+
+.ContainerMainPage{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+
+    background-image: url("../../public/zdjecieGlowne.jpg");
+    background-size: cover;
+
+    
+}
+
+
+ @-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+
+  @-webkit-keyframes slide-in-fwd-center {
+    0% {
+      -webkit-transform: translateZ(-1400px);
+              transform: translateZ(-1400px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-fwd-center {
+    0% {
+      -webkit-transform: translateZ(-1400px);
+              transform: translateZ(-1400px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }

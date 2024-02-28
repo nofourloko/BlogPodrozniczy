@@ -1,0 +1,14 @@
+.ImageMainlDestination{
+   width: 100%;
+   border-radius: 2%;
+}
+.AuthorAndDate{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+
+.DestinationTopic{
+    font-size: 32px;
+    color: #1f1c1c;
+}

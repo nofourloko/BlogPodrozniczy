@@ -1,0 +1,35 @@
+.CardReport{
+    border: none;
+    padding: 10px;
+    margin: 1% 1% 5% 1%;
+    background-color: transparent;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+
+
+.CardReport > img {
+    height: 250px;
+    border-radius: 3%;
+    box-shadow: 1px 1px 14px #ef629f;
+    border: 2px solid white;
+}
+
+.CardReportBody > button {
+    box-shadow: 1px 1px 15px #ef629f;
+    border: 2px solid white;
+    backdrop-filter: blur(10px);
+    color: white;
+    
+}
+.CardReportBodyText{
+    color: white;
+    letter-spacing: 0.1rem;
+    font-size: 25px;
+    padding: 1%;
+}
+.CardReportBody > button:hover{
+    border: 2px solid white;
+    background-color: #ef629f;
+}
