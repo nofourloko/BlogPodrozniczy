@@ -1,0 +1,21 @@
+.successPageContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    align-items: center;
+    
+}
+.t{
+   display: flex;
+   flex-direction: column;  
+   text-align: center;
+   gap: 10px;
+   width: 50%;
+}
+
+.t > p:hover{
+    cursor: pointer;
+    font-weight: bolder;
+}
