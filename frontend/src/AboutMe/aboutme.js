@@ -7,11 +7,12 @@ import './AboutMeStyle.css'
 import axios from 'axios'
 
 export default function AboutMe() {
-    const [desc, setDesc] = useState()
+    const [desc, setDesc] = useState("")
     useEffect(() => {
         async function fetchData(){
             try{
-                const response = await axios.get("http://127.0.0.1:5000/info")
+                const response = await axios.get("http://127.0.0.1:5000/file/info")
+                console.log(response)
                 setDesc(response.data)
             }catch(err){
                 console.log(err)
@@ -30,7 +31,7 @@ export default function AboutMe() {
                 <Image src={MyImage} roundedCircle fluid className='ZdjecieInfo'/>
             </Col>
             <Col xs={12} lg = {9} className='AboutMeColRigth'>
-                {desc}
+                {desc.length > 0 && desc}
             </Col>
         </Row>
         <Row className='AboutMeLinksRow'>

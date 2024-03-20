@@ -9,6 +9,8 @@ import DestinationContent from '../DestinationContent/DestinationContent';
 import AddComent from '../AddComent/AddComent';
 import Comment from '../Comment/Comment';
 import ScrollTop from "../../Utils/scrollTop"
+import Footer from '../../Footer/Footer';
+import Loader from '../../Utils/Loader';
 
 
 export default function PickedDestination() {
@@ -69,6 +71,8 @@ export default function PickedDestination() {
             if(response.data.length === 0){
                 window.location.href = "/error"
             }
+
+            console.log(response.data[0])
         }catch(err){
             console.log(err)
             window.location.href = "/error"
@@ -78,9 +82,11 @@ export default function PickedDestination() {
     FetchData()
   },[])
   return (
-    destination && 
     <>
+     {destination ?
+        <>
         <Header />
+       
         <Container style={{padding : '5%'}}>
             <Row>
                 <Col xs={12} lg={8} style={{margin: '0 auto'}}>
@@ -108,7 +114,7 @@ export default function PickedDestination() {
             </Row>
             <Row >
                 <Col xs={12} lg={8} style={{margin: '0 auto'}}>
-                    <img src={destination.Image} className='ImageMainlDestination'/> 
+                    <img src={destination.Image} className='ImagesDestination'/> 
                 </Col>
             </Row>
             {
@@ -135,7 +141,7 @@ export default function PickedDestination() {
             </Row>
             <div style={{marginTop :'0%'}}>
             {
-                comments.map((item,index) => {
+                comments.length > 0 ? comments.map((item,index) => {
                     return <Comment 
                                 Name={item.name} 
                                 Text={item.comment} 
@@ -144,12 +150,14 @@ export default function PickedDestination() {
                                 Index ={index}
                                 AddReply = {addReply}
                             />
-                })
+                }): null
             }
             </div>
             
         </Container>
+        <Footer />
         <ScrollTop />
+        </> : <Loader /> }
     </>
     
   )

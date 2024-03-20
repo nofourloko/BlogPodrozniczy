@@ -1,41 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainPage from './MainPage/MainPage';
-import TravelReportsMain from './ TravelReports/TravelReportsMain/TravelReportsMain';
+import App from './app';
 import "./BodyStyleCss.css"
-import Error from './Utils/error';
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import PickedDestination from './Destination/PickedDestination/pickedDestination';
+import AuthProvider from 'react-auth-kit';
+import createStore from 'react-auth-kit/createStore';
+import { BrowserRouter } from "react-router-dom";
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainPage />,
-  },
-  {
-    path: "/relacje",
-    element : <TravelReportsMain />
-  },
-  {
-    path : "relacje/:place",
-    element : <PickedDestination />
-  },
-  {
-    path : '*',
-    element: <Error />
-  }
-]);
+const store = createStore({
+  authName:'_auth',
+  authType:'cookie',
+  cookieDomain: window.location.hostname,
+  cookieSecure: window.location.protocol === 'https:',
+});
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router} />
+  <AuthProvider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </AuthProvider>
+ 
+
+  
 );
 
 

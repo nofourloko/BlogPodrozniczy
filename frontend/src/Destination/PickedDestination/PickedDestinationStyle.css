@@ -1,7 +1,4 @@
-.ImageMainlDestination{
-   width: 100%;
-   border-radius: 2%;
-}
+
 .AuthorAndDate{
     display: flex;
     justify-content: space-between;

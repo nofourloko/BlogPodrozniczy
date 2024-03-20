@@ -1,0 +1,66 @@
+const express = require('express')
+require('dotenv').config()
+const {checkAdmin} = require('./DbConnectionControler')
+const adminRouter = express.Router()
+const jwt = require('jsonwebtoken')
+const multer  = require('multer')
+const fs = require('fs/promises')
+const path = require('path')
+const {newPostObjContructor} = require("../Model/newPost")
+
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+      },
+    filename : function(req, file, cb){
+        return cb(null, `${Date.now()}_${file.originalname}`)
+    }
+})
+const upload = multer({storage : storage});
+
+adminRouter.get('/login', async (req, res) => {
+    const {login , password} = req.query
+    const adminData = await checkAdmin(login)
+
+    if(adminData === 0, adminData.length === 0){
+        res.status(403).json({status: 'failed'})
+        return
+    }
+
+    if(adminData[0].password !== password){
+        res.status(403).json({status: 'failed'})
+        return
+    }
+
+    const adminObj = {
+        login : adminData[0].username,
+        password : adminData[0].password,
+    }
+
+
+    const jwtToken = jwt.sign(adminObj, process.env.JWT_SECRET , { expiresIn : '24h'})
+
+    res.json({msg : 'Witaj !', token : jwtToken, username : adminObj.login})
+})
+
+
+adminRouter.post('/addPost',
+    upload.fields(
+        [
+            {name : 'images', maxCount: 7},
+            {name : 'textFile', maxCount: 1}
+        ]
+    ), 
+    async (req, res) => {
+        const { Place, Country, Continent, Date } = req.body
+        const { textFile, images } = req.files
+
+        const newPostObj = newPostObjContructor(Place, Country, Continent, Date, textFile, images )
+
+        res.json(newPostObj)
+    }
+)
+
+module.exports = adminRouter

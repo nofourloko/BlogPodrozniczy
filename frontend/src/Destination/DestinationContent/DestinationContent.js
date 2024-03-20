@@ -12,7 +12,7 @@ export default function DestinationContent({ImageSrc, Text}) {
         </Row>
         <Row >
             <Col xs={12} lg={8} style={{margin: '0 auto'}}>
-                <img src={ImageSrc} className='ImageMainlDestination'/> 
+                <img src={ImageSrc} className='ImagesDestination'/> 
             </Col>
         </Row>
     </>

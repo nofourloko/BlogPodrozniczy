@@ -11,12 +11,12 @@ export default function TravelReportsCardALL({PlaceFromList, SelectedCountry}) {
         <Col sm={10} style={{margin : '0 auto'}}>
             <Row className='ReportCardAll'>
                 <Col className='ReportCardAllImage' xs={12} md={5}>
-                        <img src={Image} />
+                    <img src={Image} />
                 </Col>
                 <Col  xs={12} md={7}>
                         
                             <p>{Country}</p>
-                            <a href={`/relacje/${Place}`}><h3>{Place}</h3></a>
+                            <a href={`/relacje/${Country}/${Place}`}><h3>{Place}</h3></a>
                             <p>{Date}</p>
                             <span className='underLine'></span>
                             <p> { Description }</p>

@@ -4,6 +4,7 @@ import AboutMe from "../AboutMe/aboutme"
 import MainPageStarting from '../MainPageStaring/MainPageStarting'
 import ScrollTop from '../Utils/scrollTop'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 
 export default function MainPage() {
   const ref = useRef(null)
@@ -15,6 +16,7 @@ export default function MainPage() {
       <div ref={ref}>
         <AboutMe ref={ref}/>
       </div>
+      <Footer />
       <ScrollTop/>
     </>
   )
